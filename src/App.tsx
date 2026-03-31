@@ -6,9 +6,9 @@ import todosFromServer from './api/todos';
 import { TodoList } from './components/TodoList';
 
 export const App = () => {
-  const initialTodos = todosFromServer.map(t => ({
-    ...t,
-    user: usersFromServer.find(u => u.id === t.userId)!,
+  const initialTodos = todosFromServer.map(soloTodo => ({
+    ...soloTodo,
+    user: usersFromServer.find(soloUser => soloUser.id === soloTodo.userId)!,
   }));
   const [todos, setTodos] = useState(initialTodos);
   const [users] = useState(usersFromServer);
@@ -42,7 +42,7 @@ export const App = () => {
 
     const nextId = todos.length ? Math.max(...todos.map(t => t.id)) + 1 : 1;
 
-    const user = users.find(u => u.id === selectedUserId);
+    const user = users.find(soloUser => soloUser.id === selectedUserId);
 
     if (!user) {
       return;
