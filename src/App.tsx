@@ -40,7 +40,9 @@ export const App = () => {
       return;
     }
 
-    const nextId = todos.length ? Math.max(...todos.map(t => t.id)) + 1 : 1;
+    const nextId = todos.length
+      ? Math.max(...todos.map(soloTodo => soloTodo.id)) + 1
+      : 1;
 
     const user = users.find(soloUser => soloUser.id === selectedUserId);
 
